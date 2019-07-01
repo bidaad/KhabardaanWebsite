@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Parset" Class="VotesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=Gorji;Initial Catalog=parset;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ParsetConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VoteAnswers" Member="VoteAnswers">
+    <Type Name="VoteAnswers">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VoteCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Votes_VoteAnswers" Member="Votes" ThisKey="VoteCode" OtherKey="Code" Type="Votes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vVoteAnswers" Member="vVoteAnswers">
+    <Type Name="vVoteAnswers">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VoteCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vVotes" Member="vVotes">
+    <Type Name="vVotes">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Votes" Member="Votes">
+    <Type Name="Votes">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="VoteStartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Votes_VoteAnswers" Member="VoteAnswers" ThisKey="Code" OtherKey="VoteCode" Type="VoteAnswers" />
+    </Type>
+  </Table>
+</Database>

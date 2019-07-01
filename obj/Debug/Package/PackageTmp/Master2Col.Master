@@ -1,0 +1,208 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master2Col.master.cs" Inherits="Khabardaan.Master2Col" %>
+
+<%@ Register Src="UserControls/UCMostVisitedNews.ascx" TagName="MostViewed" TagPrefix="News" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>خبردان :: موتور جستجوی خبری</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Language" content="fa" />
+    <meta id="description" name="description" runat="server" content="موتور جستجوی خبری" />
+    <meta id="keywords" name="keywords" runat="server" content="موتور جستجوی خبری" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <link runat="server" id="lnkCanonical" rel="canonical" />
+
+    <meta runat="server" id="twittercard" name="twitter:card" content="" />
+    <meta runat="server" id="twittersite" name="twitter:site" content="@Khabardaan_IR" />
+    <meta runat="server" id="twittertitle" name="twitter:title" content="" />
+    <meta runat="server" id="twitterdescription" name="twitter:description" content="" />
+    <meta runat="server" id="twittercreator" name="twitter:creator" content="@Khabardaan_IR" />
+    <meta runat="server" id="twitterimagesrc" name="twitter:image:src" content="" />
+
+    <meta runat="server" id="ogtitle" property="og:title" content="" />
+    <meta runat="server" id="ogurl" property="og:url" content="" />
+    <meta runat="server" id="ogimage" property="og:image" content="" />
+    <meta runat="server" id="ogdescription" property="og:description" content="" />
+    <meta runat="server" id="ogsite_name" property="og:site_name" content="YoNaab" />
+
+    <meta http-equiv="refresh" content="1200" />
+    <meta name="RefreshJsTimer" content="1200" />
+
+
+    <link rel="dns-prefetch" href="//static.Khabardaan.ir" />
+    <!--[if IE 9]>
+    <link rel="prefetch" href="//static.khabardaan.ir" />
+    <![endif]-->
+
+    <%--    <link href="//static.Khabardaan.ir/styles/main.css" rel="stylesheet" type="text/css" />
+    <link runat="server" href="//static.Khabardaan.ir/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" />--%>
+
+    <!--[if IE 8]> <link rel="stylesheet" type="text/css" href="//static.Khabardaan.ir/Styles/s/settings-ie8.css"> <![endif]-->
+    <!--[if LT IE 9]><link id="IE6Minus" rel="stylesheet" type="text/css" href="//static.Khabardaan.ir/Styles/ie.css" /><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="//static.Khabardaan.ir/Scripts/html5.js"></script>
+    <script src="//static.Khabardaan.ir/Scripts/respond.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//www.Khabardaan.ir/Styles/ie8_rtl.css" />
+    <![endif]-->
+
+    <script src="//static.Khabardaan.ir/scripts/jquery-1.11.3.min.js"></script>
+    <script async src="//static.Khabardaan.ir/scripts/bootstrap.min.js"></script>
+    <script async src="//static.Khabardaan.ir/scripts/jquery-1.11.3.min.js"></script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4554891-32"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-4554891-32');
+    </script>
+
+
+    <script>
+        var Fonts = '<link href="/styles/main1.css" rel="stylesheet" type="text/css" />'
+        //Fonts += '<link runat="server" href="//static.Khabardaan.ir/Styles/bootstrap.css" rel="stylesheet" type="text/css" />';
+        Fonts += '<link runat="server" href="~/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" />'
+        document.head.innerHTML = document.head.innerHTML + Fonts;
+
+    </script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+
+    <link runat="server" href="/Styles/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="Cats">
+            <div class="Cat World">
+                <asp:HyperLink ID="HyperLink4" NavigateUrl="~/World" runat="server"><i class="fa fa-globe gray"></i>بین الملل</asp:HyperLink>
+            </div>
+            <div class="Cat Business">
+                <asp:HyperLink ID="HyperLink8" NavigateUrl="~/Economy" runat="server"><i class="fa fa-building gray"></i>اقتصادی</asp:HyperLink>
+            </div>
+            <div class="Cat Technology">
+                <asp:HyperLink ID="HyperLink9" NavigateUrl="~/Technology" runat="server"><i class="fa fa-twitch gray"></i>تکنولوژی</asp:HyperLink>
+            </div>
+            <div class="Cat Sports">
+                <asp:HyperLink ID="HyperLink10" NavigateUrl="~/Sport" runat="server"><i class="fa fa-soccer-ball-o gray"></i>ورزش</asp:HyperLink>
+            </div>
+            <div class="Cat Science">
+                <asp:HyperLink ID="HyperLink11" NavigateUrl="~/Social" runat="server"><i class="fa fa-flask gray"></i>اجتماعی</asp:HyperLink>
+            </div>
+            <div class="Cat Health">
+                <asp:HyperLink ID="HyperLink12" NavigateUrl="~/Accidents" runat="server"><i class="fa fa-stethoscope gray"></i>حوادث</asp:HyperLink>
+            </div>
+        </div>
+    </div>
+
+
+    <asp:Literal ID="ltrMP" runat="server"></asp:Literal>
+    <form id="form1" runat="server">
+        <section id="topbar">
+            <header>
+                <div class="Header1">
+                    <div class="container">
+                        <div class="position-relative">
+                            <div class="Flags">
+                                <a href="https://www.robonewser.com" target="_blank">
+                                    <asp:Image ImageUrl="~/images/UKFlag.png" AlternateText="English News" ToolTip="English News" runat="server" />
+                                </a>
+                                <a href="https://www.allfrenchnews.com" target="_blank">
+                                    <asp:Image ImageUrl="~/images/FranceFlag.png" AlternateText="French New" ToolTip="French News" runat="server" />
+                                </a>
+                            </div>
+                            <div class="DateTimeContainer d-none d-sm-block">
+                                <asp:Label ID="lblPersianDateTime" runat="server" Text=""></asp:Label>
+                            </div>
+
+                            <div class="SearchArea d-none d-sm-block">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <asp:Button ID="btnSearch" CssClass="btn btn-primary " runat="server" Text="جستجو" OnClick="btnSearch_Click" />
+                                    </div>
+                                    <div class="col-10">
+                                        <asp:TextBox ID="txtKeyword" placeholder="جستجو" Width="600" CssClass="form-control Keyword" runat="server"></asp:TextBox>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="LogoContainer">
+                                <asp:HyperLink runat="server" NavigateUrl="~/"> <div class="Logo"></div></asp:HyperLink>
+                            </div>
+                            <div class="MobileMenuTrigger"><span style="font-size: 22px; cursor: pointer" onclick="openNav()">&#9776; </span></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </section>
+        <div class="clearfix"></div>
+        <div class="container">
+            <div class="MainBody">
+                <div class="row">
+                    
+                    <div class="col-sm-12 col-lg-8 col-md-12">
+                        <asp:ContentPlaceHolder ID="CP1" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+                    <div class="col-sm-12 col-lg-4 col-md-12 ">
+
+                        <div class="GrayArea">
+                            <div class="HeadWithBotBorder">در خبرها</div>
+                            <div class="MIKeywords Padder5">
+                                <asp:Repeater ID="rptMostImportantKeywords" runat="server">
+                                    <ItemTemplate>
+                                        <div>
+                                            <asp:HyperLink NavigateUrl='<%#"~/K/"  + Tools.ReplaceSpaceWithUnderline( Eval("Keyword")) + ".html" %>' Target="_blank" runat="server"><%#Eval("Keyword") %></asp:HyperLink>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+
+                        
+
+                        
+                        <div>
+                            <News:MostViewed runat="server" />
+                        </div>
+                        <div>
+                            <asp:ContentPlaceHolder ID="CPH2" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div id="Footer">
+                <div class="container">
+                    <div id="ToTop"><a href="#page" title="back to top" id="totop-scroller"></a></div>
+                </div>
+            </div>
+        </footer>
+        <asp:HiddenField ID="hfItemCode" runat="server" />
+    </form>
+    <asp:Literal ID="ltrAnnScript" runat="server"></asp:Literal>
+    <!-- Begin WebGozar.com Counter code -->
+    <script type="text/javascript" language="javascript" src="http://www.webgozar.ir/c.aspx?Code=3725577&amp;t=counter"></script>
+    <noscript><a href="http://www.webgozar.com/counter/stats.aspx?code=3725577" target="_blank">&#1570;&#1605;&#1575;&#1585;</a></noscript>
+    <!-- End WebGozar.com Counter code -->
+</body>
+</html>

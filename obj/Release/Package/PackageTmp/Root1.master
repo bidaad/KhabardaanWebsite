@@ -1,0 +1,326 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Root1" CodeBehind="Root1.master.cs" %>
+
+<%@ Register Src="~/UserControls/Banner.ascx" TagName="Banner" TagPrefix="Ban" %>
+<%@ Register Src="~/UserControls/Login.ascx" TagName="Login" TagPrefix="LG" %>
+<%@ Register Src="~/UserControls/SuggestSite.ascx" TagName="SuggestSite" TagPrefix="UCSuggestSite" %>
+<%@ Register Src="~/UserControls/RandUsers.ascx" TagName="RandUsers" TagPrefix="RND" %>
+<%@ Register Src="~/UserControls/UCRandSmallContent.ascx" TagName="UCRandSmallContent" TagPrefix="UCRSC" %>
+<%@ Register Src="~/UserControls/Menu.ascx" TagName="Menu" TagPrefix="MNU" %>
+<%@ Register Src="~/UserControls/TextLinks.ascx" TagName="TextLinks" TagPrefix="UCTL" %>
+<%@ Register Src="~/UserControls/UCNewsTicker.ascx" TagName="UCNewsTicker" TagPrefix="UCNT" %>
+
+<%@ Register Src="~/UserControls/UCMostVisitedContents.ascx" TagName="UCMostVisitedContents" TagPrefix="UCMVC" %>
+<%@ Register Src="~/UserControls/UCMostVisitedNews.ascx" TagName="UCMostVisitedNews" TagPrefix="UCMVN" %>
+<%@ Register Src="~/UserControls/UCNewsSubscribe.ascx" TagName="UCNewsSubscribe" TagPrefix="UCNewsSub" %>
+<%@ Register Src="~/UserControls/UCTextGalleries.ascx" TagName="UCTextGalleries" TagPrefix="UCTextGal" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>پارست :: پورتال فرهنگی خبری</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Language" content="fa" />
+    <meta id="description" name="description" runat="server" content="پورتال فرهنگی خبری پارست ، شعر ، تعبیر خواب ، نقشه تهران ، گالری عکس ، فرهنگ لغات" />
+    <meta id="keywords" name="keywords" runat="server" content="پارست,قرآن,شعر,تقویم تاریخ,فرهنگ لغت,نقشه ایران,نقشه تهران,کارت تبریک,درج آگهی رایگان" />
+    <meta http-equiv="refresh" content="1800" id="Refresh" runat="server" />
+    <meta name="viewport" content="width=device-width" />
+    <link id="Link1" runat="server" href="~/News/RSS.aspx" rel="alternate" type="application/rss+xml"
+        title="RSS 2.0" />
+    <link id="Link2" runat="server" href="~/styles/main.css" rel="stylesheet"
+        type="text/css" />
+    <link id="Link5" runat="server" href="~/Styles/bootstrap_rtl.css" rel="stylesheet" type="text/css" />
+    <link id="Link3" runat="server" href="http://static.parset.com/styles/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <link id="Link4" runat="server" href="http://static.parset.com/styles/superfish.css"
+        rel="stylesheet" type="text/css" />
+
+    <%--<script type="text/javascript" src="http://popupads.ir/popupcode?userid=1976"></script>--%>
+
+
+    <script type="text/javascript">
+<!--
+    if (self != top) {
+        top.location.href = self.location;
+    }
+    //-->
+    </script>
+
+</head>
+<body>
+    <asp:Literal ID="ltrMP" runat="server"></asp:Literal>
+    <form id="form1" runat="server">
+        
+        <div class="Head1">
+            <div class="TopHead">
+                <div class="searchBoxWrap">
+                    <button type="button" class="searchGo" value="Go" onclick="submitSearch();">
+                    </button>
+                    <input name="query" size="20" maxlength="255" onkeydown="if (event.keyCode == 13) submitSearch();"
+                        class="searchBox" value="جستجو" onfocus="if(this.value==this.defaultValue) this.value='';"
+                        id="universalSearchBox" type="text" />
+                </div>
+                <asp:Panel ID="pnlLoggedUserInfo" Visible="false" CssClass="LoginTools" runat="server">
+                    <table class="tblHeader1">
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label2" runat="server" Text="کاربر جاری: "></asp:Label>
+                                <asp:Label ID="lblUserCaption" runat="server"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="hplUserPanel" NavigateUrl="~/Users/Home.aspx" runat="server">پنل کاربری</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink8" NavigateUrl="~/Logout.aspx" runat="server">خروج</asp:HyperLink>
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+            </div>
+        </div>
+        <div class="Head2">
+            <div class="TopMenuWrap">
+                <div class="CalendarPan">
+                    <div>
+                        <asp:Literal ID="ltrPersianDate" runat="server"></asp:Literal>
+                        &nbsp;
+                    <asp:Literal ID="ltrGerigorianDate" runat="server"></asp:Literal>
+                    </div>
+                </div>
+                <ul class="TopMenu">
+                    <li>
+                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Default.aspx" runat="server">صفحه اصلی</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink NavigateUrl="~/Reg" ID="hplReg" runat="server">ثبت نام</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hplLogin" NavigateUrl="~/Users/Login.aspx" runat="server">ورود اعضا</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink NavigateUrl="~/AboutUs.aspx" ID="hplAboutUs" runat="server">درباره ما</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink NavigateUrl="~/ContactUs.aspx" ID="hplContactUs" runat="server">تماس با ما</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink NavigateUrl="~/Advertise.aspx" ID="hplAdver" runat="server">تبلیغات در پارست</asp:HyperLink>
+                    </li>
+
+                    <li>
+                        <asp:HyperLink ID="HyperLink3" NavigateUrl="~/Ads/Default.aspx" runat="server">نیازمندی</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink NavigateUrl="~/Games" runat="server">بازی آنلاین</asp:HyperLink>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="Clear">
+        </div>
+        <asp:Panel runat="server" ID="pnlHomeWrapper" CssClass="HomeWrapper">
+            <div class="WinRadiusGray">
+                <div class="InnerBarWrap">
+                    <UCNT:UCNewsTicker runat="server" />
+                </div>
+            </div>
+
+            <div class="MainPage" id="MainContent">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xm-2">
+                        <div class="WinRadiusGray">
+                            <MNU:Menu runat="server" />
+                        </div>
+                        <div class="WinRadiusGray">
+                            <UCRSC:UCRandSmallContent ID="UCRandSmallContent1" TakeCount="4" runat="server" />
+                        </div>
+                        <div class="WinRadiusGray">
+                            <UCRSC:UCRandSmallContent ID="UCRandSmallContent2" TakeCount="4" runat="server" />
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xm-10">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <asp:ContentPlaceHolder ID="CP1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <div class="WinRadiusGray">
+                                    <UCBanner:Banner ID="Banner1" runat="server" PositionCode="2" />
+                                </div>
+                                <div class="WinRadiusGray">
+                                    <UCBanner:Banner ID="Banner2" runat="server" PositionCode="3" />
+                                </div>
+
+                                <div class="WinRadiusGray">
+                                    <UCMVC:UCMostVisitedContents runat="server" />
+                                </div>
+                                <div class="WinRadiusGray">
+                                    <UCMVN:UCMostVisitedNews runat="server" />
+                                </div>
+                                <%--<div class="WinRadiusGray">
+                            <NL:TextNewsList runat="server" PageSize="50" NewsType="MostVisited" ID="tnMostVisited">
+                            </NL:TextNewsList>
+                        </div>--%>
+
+                                <div>
+                                    <UCSuggestSite:SuggestSite ID="SuggestSite1" runat="server"></UCSuggestSite:SuggestSite>
+                                </div>
+                                <div>
+                                    <UCNewsSub:UCNewsSubscribe runat="server" ID="UCNewsSubscribe1" />
+                                </div>
+
+                                <div class="WinRadiusGray">
+                                    <UCTL:TextLinks runat="server">
+                                    </UCTL:TextLinks>
+                                </div>
+                                <div class="WinRadiusGray">
+                                    <UCBanner:Banner ID="Banner4" runat="server" PositionCode="4" />
+                                </div>
+                                <div class="WinRadiusGray">
+                                    <UCBanner:Banner ID="Banner5" runat="server" PositionCode="5" />
+                                </div>
+                                <div class="WinRadiusGray">
+                                    <UCBanner:Banner ID="Banner6" runat="server" PositionCode="6" />
+                                </div>
+                                <div class="WinRadiusGray">
+                                    <UCBanner:Banner ID="Banner3" runat="server" PositionCode="15" />
+                                </div>
+                                <div>
+                                    <UCTextGal:UCTextGalleries runat="server" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            <div id="Footer">
+                <div class="WinRadiusGray">
+                    <UCBanner:Banner ID="Banner7" runat="server" PositionCode="17" />
+                </div>
+                <div class="Marginer2">
+                    <div class="cStats">
+                        <%--<script type="text/javascript">
+                            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+                            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+                        </script>
+                        <script type="text/javascript">
+                            try {
+                                var pageTracker = _gat._getTracker("UA-4554891-3");
+                                pageTracker._trackPageview();
+                            } catch (err) { }</script>
+                        <!-- Begin WebGozar.com Counter code -->
+                        <script type="text/javascript" language="javascript" src="http://www.webgozar.ir/c.aspx?Code=1063860&amp;t=counter"></script>
+                        <noscript>
+                            <a href="http://www.webgozar.com/counter/stats.aspx?code=1063860" target="_blank">&#1570;&#1605;&#1575;&#1585;</a>
+                        </noscript>
+                        <!-- End WebGozar.com Counter code -->--%>
+                    </div>
+                    <table class="tblFooter">
+                        <tr>
+                            <td>
+                                <asp:HyperLink ID="HyperLink5" NavigateUrl="~/ContactUs.aspx" runat="server">تماس با ما</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink6" NavigateUrl="~/AboutUs.aspx" runat="server">درباره ما</asp:HyperLink>
+                            </td>
+                            <td>
+                                <asp:HyperLink ID="HyperLink7" Style="color: Maroon;" NavigateUrl="~/Advertise.aspx"
+                                    runat="server">تبلیغات</asp:HyperLink>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div id="ToTop">
+                        <a href="#page" title="بازگشت به بالای صفحه" id="totop-scroller"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="BackLoading" align="center" style="border: 1px solid #008ACC; vertical-align: middle;">
+            </div>
+        </asp:Panel>
+        <asp:HiddenField ID="hfItemCode" runat="server" />
+    </form>
+    <div id="dialog" style="display: none" title="ارسال اس ام اس">
+        <div class="cHiddenPanel" id="PanelSendSMS">
+            <table class="tblMainSMSPanel">
+                <tr>
+                    <td style="width: 200px;">
+                        <div id="SendSMSTools">
+                            <div id="SMSInnerArea">
+                            </div>
+                            <div class="ToNumberArea">
+                                <table class="tblSMSToNumber">
+                                    <tbody>
+                                        <tr>
+                                            <td>شماره مقصد:
+                                            </td>
+                                            <td>
+                                                <input id="ToCellNo" maxlength="11" class="ToNumber" type="text" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="SMSButtons">
+                                <input id="btnSendSMS" onclick="ReqSendSMS()" value="" type="button" />
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 20px;">
+                        <div id="BigMessage">
+                            <AKP:MsgBox runat="server" ID="msgSMSDialog">
+                            </AKP:MsgBox>
+                        </div>
+                        <div id="SendInfo" class="FormatedRTL">
+                            شما در صفحه نمایشگر موبایل روبرو متنی را که از روی سایت انتخاب (<span lang="en-us">Select</span>)
+                            کرده اید مشاهده می کنید.<br />
+                            جهت ارسال متن از طریق اس ام اس شماره موبایل دلخواهتان را درون کادر سفید رنگ داخل
+                            موبایل در جلوی کلمه شماره مقصد وارد نمایید و سپس روی کلید ارسال کلیک نمایید.<br />
+                            شما می توانید از طریق هر یک از کارتهای بانکی عضو شتاب برای ارسال اس ام اس روبرو
+                            اقدام کنید.<br />
+                            هزینه ارسال متن انتخاب شده = <em id="SMSSendCostGuest" class="box" style="font-weight: bold; padding: 2px;">&nbsp;&nbsp;</em> تومان<br />
+                            <br />
+                            <h3 style="color: white; background-color: Maroon; padding: 4px; text-align: center; border-radius: 4px;">تخفیف 43 درصدی ویژه اعضا
+                            </h3>
+                            <span lang="fa">با شارژ اکانت خود به میزان حداقل 1000 تومان هزینه ارسال این اس ام اس
+                                برای شما <em id="SMSSendCostUser" class="box" style="font-weight: bold; padding: 2px;">&nbsp;&nbsp;</em> تومان محاسبه خواهد شد.</span><br />
+                            <br />
+                            <p>
+                                اگر عضو نیستید میتوانید از طریق
+                                <asp:HyperLink ID="HyperLink4" runat="server" ForeColor="Blue" CssClass="cColorLink"
+                                    Target="_blank" Font-Bold="true" NavigateUrl="~/Reg/Default.aspx">این لینک</asp:HyperLink>
+                                &nbsp;عضو شوید.
+                            </p>
+                            <p>
+                                اگر نیاز به شارژ موجودی دارید از طریق
+                                <asp:HyperLink ID="HyperLink9" runat="server" ForeColor="Blue" CssClass="cColorLink"
+                                    Target="_blank" Font-Bold="true" NavigateUrl="~/Users/AccountCharge.aspx">این لینک</asp:HyperLink>
+                                &nbsp;موجودی خود را اضافه کنید.
+                            </p>
+                            <p>
+                                <a target="_blank" class="cColorLink" style="font-size: 15px;" href="http://www.parset.com/Help/SMSHelp.aspx">توضیحات بیشتر</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <asp:Literal ID="ltrAnnScript" runat="server"></asp:Literal>
+    <script type="text/javascript">
+        $(function () {
+            $(document).tooltip();
+        });
+        $("#totop-scroller").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="parset" Class="QuranDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=Gorji;Initial Catalog=parset;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ParsetConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.SoreNames" Member="SoreNames">
+    <Type Name="SoreNames">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Sore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuranFarsi" Member="QuranFarsis">
+    <Type Name="QuranFarsi">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Sore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Aye" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Matn" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuranArabic" Member="QuranArabics">
+    <Type Name="QuranArabic">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Sore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Aye" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Matn" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vQuranFarsi" Member="vQuranFarsis">
+    <Type Name="vQuranFarsi">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Aye" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Matn" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SoreName" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>

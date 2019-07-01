@@ -1,0 +1,6 @@
+D:\Khabardaan\Khabrdaan\bin\Khabardaan.dll.config
+D:\Khabardaan\Khabrdaan\bin\Khabardaan.dll
+D:\Khabardaan\Khabrdaan\bin\Khabardaan.pdb
+D:\Khabardaan\Khabrdaan\obj\Debug\Khabrdaan.csprojResolveAssemblyReference.cache
+D:\Khabardaan\Khabrdaan\obj\Debug\Khabardaan.dll
+D:\Khabardaan\Khabrdaan\obj\Debug\Khabardaan.pdb

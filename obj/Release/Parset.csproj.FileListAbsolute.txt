@@ -1,0 +1,6 @@
+D:\Parset\Parsetv91.1\obj\Release\Parset.dll
+D:\Parset\Parsetv91.1\obj\Release\Parset.pdb
+D:\Parset\Parsetv91.1\bin\Parset.dll
+D:\Parset\Parsetv91.1\bin\Parset.XmlSerializers.dll
+D:\Parset\Parsetv91.1\bin\Parset.pdb
+D:\Parset\Parsetv91.1\obj\Release\Parset.XmlSerializers.dll

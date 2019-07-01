@@ -1,0 +1,6 @@
+D:\RoboNewser\RoboNewser\obj\Debug\RoboNewser.csprojResolveAssemblyReference.cache
+D:\RoboNewser\RoboNewser\bin\RoboNewser.dll.config
+D:\RoboNewser\RoboNewser\bin\RoboNewser.dll
+D:\RoboNewser\RoboNewser\bin\RoboNewser.pdb
+D:\RoboNewser\RoboNewser\obj\Debug\RoboNewser.dll
+D:\RoboNewser\RoboNewser\obj\Debug\RoboNewser.pdb

@@ -1,0 +1,178 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="WallpaperMP" CodeBehind="WallpaperMP.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Custom size wallpapers</title>
+    <link id="Link1" runat="server" href="~/Styles/WallMain.css" rel="stylesheet" type="text/css" />
+    <meta name="title" content="Free Software Downloads" />
+    <meta runat="server" id="desc" name="description" content="Custom size wallpaper download - Parset.com" />
+    <meta runat="server" id="key" name="keywords" content="wallpaper, download, custom, size, pictures, images, photos, weblogs, image gallery" />
+    <meta name="Author" content="Parset.Com (TM)" />
+    <meta name="COPYRIGHT" content="Copyright@2013 - Parset.Com (TM) Allrights reserved" />
+    <meta name="ROBOTS" content="ALL" />
+</head>
+<body>
+    <form id="form1" action="~/SoftwareList.aspx" runat="server">
+    <div id="AllSubmenus">
+        <div id="Search">
+            <div class="SearchBox">
+                <div style="position: relative; top: 10px;">
+                    <asp:Repeater ID="dtlCats" runat="server">
+                        <HeaderTemplate>
+                            <table cellspacing="5">
+                                <tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <td>
+                                <a href="ShowList.aspx?CatCode=<%#DataBinder.Eval(Container.DataItem, "Code") %>">
+                                    <img style="border: solid 1px #000000" src="../CustomWall/70/<%#DataBinder.Eval(Container.DataItem, "CatPath") %>/<%#DataBinder.Eval(Container.DataItem, "Filename").ToString().ToLower().Replace(".jpg",".png") %>" />
+                                </a>
+                            </td>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            <td>
+                                <asp:HyperLink ID="hplMoreCats" NavigateUrl="~/Wallpapers" runat="server">more »</asp:HyperLink>
+                            </td>
+                            </tr></table>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>
+        <div id="AlphabetList">
+            <div class="SearchBox">
+            </div>
+        </div>
+        <div id="E2S">
+            <div class="SearchBox">
+            </div>
+        </div>
+        <div id="E2I">
+            <div class="SearchBox">
+            </div>
+        </div>
+        <div id="E2A">
+            <div class="SearchBox">
+            </div>
+        </div>
+        <div id="SiteMenu">
+            <table class="tblSubMenu">
+                <tr>
+                    <td>
+                        <asp:HyperLink ID="hplMyProfile" runat="server">My Profile</asp:HyperLink>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hplEditProfile" runat="server">Edit Profile</asp:HyperLink>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hplMyComments" runat="server">My Comments</asp:HyperLink>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hplMyPhotos" runat="server">My Photos</asp:HyperLink>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hplMyFavorites" runat="server">My Favorites</asp:HyperLink>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="SuggestDiv">
+    </div>
+    <div id="wrapper">
+        <div class="Top">
+            <div class="cTopHeader">
+                <div class="FreeSoftwareDownload">
+                </div>
+                <div class="ParsetSmallLogo">
+                </div>
+            </div>
+        </div>
+        <div class="Container">
+            <div style="text-align: right; height: 160px;">
+                <div class="Header">
+                    <div class="Toolbar">
+                        <table cellpadding="0" cellspacing="0" class="tblToolbar">
+                            <tr>
+                                <td>
+                                    <div id="SearchMenu" onclick="SelectMenu(this, 'Search')" onmouseout1="DeselectItem(this)">
+                                        <asp:Label ID="hplSearch" runat="server">Categories</asp:Label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="AlphabetListMenu" onclick="SelectMenu(this, 'AlphabetList')" onmouseout1="DeselectItem(this)">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="SubMenus">
+                        <div class="SubCon" id="SubMenuCont">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="tblCont" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="LeftSite">
+                        <div class="LeftCont">
+                            <asp:ContentPlaceHolder ID="C1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </td>
+                    <td class="RightSite">
+                        <script type="text/javascript"><!--
+                            google_ad_client = "ca-pub-6197927614283991";
+                            /* 160x600, created 12/16/08 */
+                            google_ad_slot = "5376996885";
+                            google_ad_width = 160;
+                            google_ad_height = 600;
+//-->
+                        </script>
+                        <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                        </script>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="Bottom">
+            <div id="RelatedSites">
+            </div>
+            <div id="BottomLinks">
+                <nobr>
+                    <a href="SiteHelp.aspx">Site Help</a></nobr>
+                |
+                <nobr>
+                    <a href="AboutUs.aspx">About Us</a></nobr>
+                |
+                <nobr>
+                    <a href="ContactUs.aspx">Contact Us</a></nobr>
+                <br />
+                &copy; 2008-2009 Parset. All rights reserved.
+            </div>
+        </div>
+    </div>
+    </form>
+    <script language="javascript" type="text/javascript">
+objMenu = document.getElementById('<%=ActiveMenu %>Menu')
+SelectMenu(objMenu, '<%=ActiveMenu %>')
+
+<asp:Literal ID="ltrPath" runat="server"></asp:Literal>
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-4554891-3");
+            pageTracker._trackPageview();
+        } catch (err) { }</script>
+    <!-- Begin WebGozar.com Counter code -->
+    <script type="text/javascript" language="javascript" src="http://www.webgozar.ir/c.aspx?Code=1063860&amp;t=counter"></script>
+    <noscript>
+        <a href="http://www.webgozar.com/counter/stats.aspx?code=1063860" target="_blank">&#1570;&#1605;&#1575;&#1585;</a></noscript>
+    <!-- End WebGozar.com Counter code -->
+</body>
+</html>

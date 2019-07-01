@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="parset" Class="WallpapersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=Gorji;Initial Catalog=parset;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ParsetConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WallCats" Member="WallCats">
+    <Type Name="WallCat">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CatPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="WallCat_Wallpaper" Member="Wallpapers" ThisKey="Code" OtherKey="CatCode" Type="Wallpaper" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wallpapers" Member="Wallpapers">
+    <Type Name="Wallpaper">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="WallCat_Wallpaper" Member="WallCat" ThisKey="CatCode" OtherKey="Code" Type="WallCat" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="vWallpapers">
+    <Type Name="vWallpaper">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CatCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CatPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

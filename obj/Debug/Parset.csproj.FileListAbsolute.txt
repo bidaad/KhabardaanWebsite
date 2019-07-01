@@ -1,0 +1,6 @@
+D:\Parset\Parsetv91.1\bin\Parset.dll
+D:\Parset\Parsetv91.1\bin\Parset.pdb
+D:\Parset\Parsetv91.1\obj\Debug\Parset.dll
+D:\Parset\Parsetv91.1\obj\Debug\Parset.pdb
+D:\Parset\Parsetv91.1\obj\Debug\Parset.csprojResolveAssemblyReference.cache
+D:\Parset\Parsetv91.1\bin\Parset.dll.config

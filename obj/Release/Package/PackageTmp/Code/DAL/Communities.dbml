@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="parset" Class="CommunitiesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=parset;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ParsetConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CommunityMembers" Member="CommunityMembers">
+    <Type Name="CommunityMembers">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CommunityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JoinDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Communities_CommunityMembers" Member="Communities" ThisKey="CommunityCode" OtherKey="Code" Type="Communities" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CommunityOwners" Member="CommunityOwners">
+    <Type Name="CommunityOwners">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CommunityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Communities_CommunityOwners" Member="Communities" ThisKey="CommunityCode" OtherKey="Code" Type="Communities" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CommunityPhotos" Member="CommunityPhotos">
+    <Type Name="CommunityPhotos">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CommunityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Communities_CommunityPhotos" Member="Communities" ThisKey="CommunityCode" OtherKey="Code" Type="Communities" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vCommunityOwners" Member="vCommunityOwners">
+    <Type Name="vCommunityOwners">
+      <Column Name="CommunityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Communities" Member="Communities">
+    <Type Name="Communities">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CreatorUserCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MemPolicy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CoverPhotoCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Communities_CommunityMembers" Member="CommunityMembers" ThisKey="Code" OtherKey="CommunityCode" Type="CommunityMembers" />
+      <Association Name="Communities_CommunityOwners" Member="CommunityOwners" ThisKey="Code" OtherKey="CommunityCode" Type="CommunityOwners" />
+      <Association Name="Communities_CommunityPhotos" Member="CommunityPhotos" ThisKey="Code" OtherKey="CommunityCode" Type="CommunityPhotos" />
+      <Association Name="Communities_CommunityPosts" Member="CommunityPosts" ThisKey="Code" OtherKey="CommunityCode" Type="CommunityPosts" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CommunityPosts" Member="CommunityPosts">
+    <Type Name="CommunityPosts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CommunityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CommunityPosts_UserCommunityPostComments" Member="UserCommunityPostComments" ThisKey="Code" OtherKey="PostCode" Type="UserCommunityPostComments" />
+      <Association Name="Communities_CommunityPosts" Member="Communities" ThisKey="CommunityCode" OtherKey="Code" Type="Communities" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vUserCommunityPosts" Member="vUserCommunityPosts">
+    <Type Name="vUserCommunityPosts">
+      <Column Name="ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserCommunityPostLikes" Member="UserCommunityPostLikes">
+    <Type Name="UserCommunityPostLikes">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserCommunityPostComments" Member="UserCommunityPostComments">
+    <Type Name="UserCommunityPostComments">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CommunityPosts_UserCommunityPostComments" Member="CommunityPosts" ThisKey="PostCode" OtherKey="Code" Type="CommunityPosts" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vUserCommunityPostComments" Member="vUserCommunityPostComments">
+    <Type Name="vUserCommunityPostComments">
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PostCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CommentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SmallPicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vCommunities" Member="vCommunities">
+    <Type Name="vCommunities">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vCommunityPosts" Member="vCommunityPosts">
+    <Type Name="vCommunityPosts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CommunityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vUserCommunities" Member="vUserCommunities">
+    <Type Name="vUserCommunities">
+      <Column Name="UserCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HCPicStatusCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

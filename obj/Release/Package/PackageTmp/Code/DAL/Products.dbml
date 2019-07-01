@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IranKids" Class="ProductsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=176.9.87.115,2008;Initial Catalog=irankids;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="irankidsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vProductCats" Member="vProductCats">
+    <Type Name="vProductCats">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MasterCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductRelatedPros" Member="ProductRelatedPros">
+    <Type Name="ProductRelatedPros">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelatedProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vProductRelatedPros" Member="vProductRelatedPros">
+    <Type Name="vProductRelatedPros">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelatedProduct" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SelectedProducts" Member="SelectedProducts">
+    <Type Name="SelectedProducts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HCSelectTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Products_SelectedProducts" Member="Products" ThisKey="ProductCode" OtherKey="Code" Type="Products" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Products">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductCatCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InternalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ViewNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Porsant" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HCMovieCompanyCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SmallPicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HCProductAvailabilitCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShopCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HCGenderCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Products_SelectedProducts" Member="SelectedProducts" ThisKey="Code" OtherKey="ProductCode" Type="SelectedProducts" />
+      <Association Name="ProductCats_Products" Member="ProductCats" ThisKey="ProductCatCode" OtherKey="Code" Type="ProductCats" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vProducts" Member="vProducts">
+    <Type Name="vProducts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CatTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ViewNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ProductCatCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InternalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MovieCompany" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SmallPicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="HCMovieCompanyCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HCProductAvailabilitCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Availabality" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="HCGenderCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vRandTextProducts" Member="vRandTextProducts">
+    <Type Name="vRandTextProducts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vSelectedProducts" Member="vSelectedProducts">
+    <Type Name="vSelectedProducts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SelectType" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HCSelectTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ShowOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SmallPicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="HCProductAvailabilitCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vRandSelectedProducts" Member="vRandSelectedProducts">
+    <Type Name="vRandSelectedProducts">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SelectType" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HCSelectTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ShowOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SmallPicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="HCProductAvailabilitCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vMostSoldProducts" Member="vMostSoldProducts">
+    <Type Name="vMostSoldProducts">
+      <Column Name="ProductCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SellCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductCats" Member="ProductCats">
+    <Type Name="ProductCats">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MasterCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ProductCats_Products" Member="Products" ThisKey="Code" OtherKey="ProductCatCode" Type="Products" />
+      <Association Name="ProductCats_ProductCats" Member="ProductCats1" ThisKey="Code" OtherKey="MasterCode" Type="ProductCats" />
+      <Association Name="ProductCats_ProductCats" Member="ProductCat1" ThisKey="MasterCode" OtherKey="Code" Type="ProductCats" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vExProductCats" Member="vExProductCats">
+    <Type Name="vExProductCats">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="MasterCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

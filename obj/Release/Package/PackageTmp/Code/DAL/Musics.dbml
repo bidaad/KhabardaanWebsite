@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="parset" Class="MusicsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=Gorji;Initial Catalog=parset;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ParsetConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ArtistPictures" Member="ArtistPictures">
+    <Type Name="ArtistPictures">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ArtistCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Artists_ArtistPictures" Member="Artists" ThisKey="ArtistCode" OtherKey="Code" Type="Artists" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AlbumMusics" Member="AlbumMusics">
+    <Type Name="AlbumMusics">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AlbumCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ArtistAlbums_AlbumMusics" Member="ArtistAlbums" ThisKey="AlbumCode" OtherKey="Code" Type="ArtistAlbums" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Artists" Member="Artists">
+    <Type Name="Artists">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Artists_ArtistPictures" Member="ArtistPictures" ThisKey="Code" OtherKey="ArtistCode" Type="ArtistPictures" />
+      <Association Name="Artists_ArtistAlbums" Member="ArtistAlbums" ThisKey="Code" OtherKey="ArtistCode" Type="ArtistAlbums" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ArtistAlbums" Member="ArtistAlbums">
+    <Type Name="ArtistAlbums">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ArtistCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PicFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="EnglishTitle" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="ArtistAlbums_AlbumMusics" Member="AlbumMusics" ThisKey="Code" OtherKey="AlbumCode" Type="AlbumMusics" />
+      <Association Name="Artists_ArtistAlbums" Member="Artists" ThisKey="ArtistCode" OtherKey="Code" Type="Artists" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
